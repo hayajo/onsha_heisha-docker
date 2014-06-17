@@ -25,6 +25,17 @@ Docker基礎
 [Docker入門 (全11回) - プログラミングならドットインストール](http://dotinstall.com/lessons/basic_docker)
 
 
+### sshd
+
+sshで接続できるようにしてみよう
+
+    $ cd /vagrant/httpd
+    $ docker build -t onsha_heisha/httpd .
+    $ docker run --name=httpd -d onsha_heisha/httpd
+    $ curl `docker inspect --format '{{ .NetworkSettings.IPAddress }}' httpd`
+    $ ssh docker@`docker inspect --format '{{ .NetworkSettings.IPAddress }}' httpd`
+
+
 Docker実践
 ----------
 
@@ -61,3 +72,4 @@ localhost(8080) ----- Nginx(lb:80) --+-- WordPress(app1:80) --+-- MySQL(db:3306)
 ----
 
  - [Vagrant + Docker + Serf のサンプル](https://bitbucket.org/hayajo/sample-vagrant-docker_provider)
+
