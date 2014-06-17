@@ -23,3 +23,15 @@ Docker基礎
 ----------
 
 [Docker入門 (全11回) - プログラミングならドットインストール](http://dotinstall.com/lessons/basic_docker)
+
+
+### sshd
+
+sshで接続できるようにしてみよう
+
+    $ cd /vagrant/httpd
+    $ docker build -t onsha_heisha/httpd .
+    $ docker run --name=httpd -d onsha_heisha/httpd
+    $ curl `docker inspect --format '{{ .NetworkSettings.IPAddress }}' httpd`
+    $ ssh docker@`docker inspect --format '{{ .NetworkSettings.IPAddress }}' httpd`
+
