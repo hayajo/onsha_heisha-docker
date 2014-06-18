@@ -11,4 +11,6 @@ Vagrant.configure(2) do |config|
     cd /vagrant
     gunzip -c centos-6.4.tar.gz | docker import - centos
   SCRIPT
+
+  config.vm.network :forwarded_port, guest: 80, host: 8080
 end
